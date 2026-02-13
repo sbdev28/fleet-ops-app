@@ -1,0 +1,141 @@
+{
+    "fleet_name": "Bahia Mar",
+    "vessels": [
+        {
+            "id": "RD-001",
+            "name": "Reel Deel",
+            "engine": {
+                "hours": 283.5,
+                "last_service": 100
+            },
+            "maintenance": [
+                {
+                    "task": "Oil Change",
+                    "interval_hours": 100,
+                    "last_done_hours": 100
+                },
+                {
+                    "task": "Filter Replacement",
+                    "interval_hours": 200,
+                    "last_done_hours": 0
+                }
+            ],
+            "type": "Unknown"
+        },
+        {
+            "id": "SE-002",
+            "name": "Sea Explorer",
+            "engine": {
+                "hours": 330.2,
+                "last_service": 200
+            },
+            "maintenance": [
+                {
+                    "task": "Oil Change",
+                    "interval_hours": 100,
+                    "last_done_hours": 200
+                },
+                {
+                    "task": "Filter Replacement",
+                    "interval_hours": 200,
+                    "last_done_hours": 200
+                }
+            ],
+            "type": "Yacht"
+        },
+        {
+            "id": "HMU-003",
+            "name": "Hook Me Up",
+            "engine": {
+                "hours": 84.0,
+                "last_service": 0
+            },
+            "maintenance": [
+                {
+                    "task": "Oil Change",
+                    "interval_hours": 100,
+                    "last_done_hours": 0
+                },
+                {
+                    "task": "Filter Replacement",
+                    "interval_hours": 200,
+                    "last_done_hours": 0
+                }
+            ],
+            "type": "Center_Console"
+        },
+        {
+            "id": "OS-004",
+            "name": "Ocean Spirit",
+            "engine": {
+                "hours": 234.8,
+                "last_service": 150
+            },
+            "maintenance": [
+                {
+                    "task": "Oil Change",
+                    "interval_hours": 100,
+                    "last_done_hours": 150
+                },
+                {
+                    "task": "Filter Replacement",
+                    "interval_hours": 200,
+                    "last_done_hours": 150
+                }
+            ],
+            "type": "Toys"
+        },
+        {
+            "name": "Tender",
+            "type": "Center_Console",
+            "engine": {
+                "hours": 20.0
+            },
+            "maintenance": [
+                {
+                    "task": "Check Bilge",
+                    "interval_hours": 100.0,
+                    "last_done_hours": 15.0
+                }
+            ]
+        },
+        {
+            "name": "truck",
+            "type": "Vehicles",
+            "engine": {
+                "hours": 26.0
+            },
+            "maintenance": [
+                {
+                    "task": "Oil Change",
+                    "interval_hours": 75,
+                    "last_done_hours": 0.0
+                },
+                {
+                    "task": "Tire Rotation",
+                    "interval_hours": 150,
+                    "last_done_hours": 0.0
+                }
+            ]
+        },
+        {
+            "name": "Firefly",
+            "type": "Helicopters",
+            "engine": {
+                "hours": 22.0
+            },
+            "maintenance": [
+                {
+                    "task": "Inspection",
+                    "interval_hours": 50,
+                    "last_done_hours": 0.0
+                },
+                {
+                    "task": "Oil / Fluids",
+                    "interval_hours": 75,
+                    "last_done_hours": 0.0
+                }
+            ]
+        }
+    ]
+}
