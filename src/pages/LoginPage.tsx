@@ -42,13 +42,34 @@ export function LoginPage() {
 
   return (
     <PageContainer>
-      <div className="mx-auto mt-10 w-full max-w-md space-y-4">
-        <header className="space-y-2">
-          <h1 className="text-xl font-semibold text-fleet-white">FleetOps Command Access</h1>
-          <p className="text-sm text-fleet-light">Sign in with your Supabase account to access your fleet workspace.</p>
-        </header>
+      <div className="mx-auto mt-8 w-full max-w-md space-y-4 lg:mt-10 lg:grid lg:max-w-5xl lg:grid-cols-[1.05fr_1fr] lg:gap-4 lg:space-y-0">
+        <Card className="space-y-4">
+          <div className="space-y-1">
+            <p className="text-xs tracking-[0.2em] text-fleet-mid">SECURE ACCESS</p>
+            <h1 className="fleet-text-metal text-xl font-semibold text-fleet-white">FleetOps Command Access</h1>
+            <p className="text-sm text-fleet-light">Authenticated Supabase session for your fleet workspace.</p>
+          </div>
 
-        <Card>
+          <div className="fleet-panel-subtle rounded-xl border border-fleet-mid p-4">
+            <div className="space-y-2">
+              <p className="text-sm font-semibold text-fleet-white">System Readiness</p>
+              <p className="text-sm text-fleet-light">RLS enforced • Storage private • Audit-safe operations</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="fleet-panel-subtle rounded-xl border border-fleet-mid p-3">
+              <p className="text-xs text-fleet-mid">MODE</p>
+              <p className="text-sm font-semibold text-fleet-white">Production</p>
+            </div>
+            <div className="fleet-panel-subtle rounded-xl border border-fleet-mid p-3">
+              <p className="text-xs text-fleet-mid">THEME</p>
+              <p className="text-sm font-semibold text-fleet-white">Command Red</p>
+            </div>
+          </div>
+        </Card>
+
+        <Card className="space-y-4">
           <form onSubmit={onSubmit} className="space-y-4">
             <label className="block space-y-2">
               <span className="text-sm text-fleet-light">Email</span>
@@ -72,7 +93,11 @@ export function LoginPage() {
               />
             </label>
 
-            {errorMessage ? <p className="text-sm text-fleet-danger">{errorMessage}</p> : null}
+            {errorMessage ? (
+              <p className="fleet-panel-subtle rounded-xl border border-fleet-danger/70 p-3 text-sm text-fleet-danger">
+                {errorMessage}
+              </p>
+            ) : null}
 
             <Button type="submit" block disabled={isSubmitting}>
               {isSubmitting ? 'Signing in...' : 'Sign In'}

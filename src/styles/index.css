@@ -11,6 +11,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% -10%, rgba(220, 38, 38, 0.14), transparent 34%),
+    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.06), transparent 32%),
+    radial-gradient(circle at 50% 120%, rgba(220, 38, 38, 0.08), transparent 40%);
+  z-index: 0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,4 +43,69 @@ body,
   min-height: 100%;
   background-color: #0B0F14;
   overflow-x: hidden;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+@layer components {
+  .fleet-panel {
+    background:
+      linear-gradient(150deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.35)),
+      #1A1F26;
+    border-color: #2B313A;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+      0 10px 26px rgba(0, 0, 0, 0.35);
+  }
+
+  .fleet-panel-subtle {
+    background:
+      linear-gradient(150deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0.4)),
+      #0B0F14;
+    border-color: #2B313A;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.55);
+  }
+
+  .fleet-text-metal {
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.22),
+      0 14px 24px rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.02em;
+  }
+
+  .fleet-field {
+    min-height: 44px;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid #2B313A;
+    background:
+      linear-gradient(150deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(0, 0, 0, 0.4)),
+      #0B0F14;
+    color: #FFFFFF;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.55);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .fleet-field::placeholder {
+    color: #2B313A;
+  }
+
+  .fleet-field:focus-visible {
+    border-color: rgba(220, 38, 38, 0.65);
+    outline: 2px solid rgba(220, 38, 38, 0.35);
+    outline-offset: 0;
+  }
 }

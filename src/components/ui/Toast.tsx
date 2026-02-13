@@ -37,15 +37,15 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="pointer-events-none fixed inset-x-0 bottom-24 z-50 px-4">
-        <div className="mx-auto flex w-full max-w-md flex-col gap-3">
+      <div className="pointer-events-none fixed inset-x-0 bottom-24 z-50 px-4 lg:bottom-6">
+        <div className="mx-auto flex w-full max-w-md flex-col gap-3 lg:max-w-xl">
           {items.map((item) => (
             <div
               key={item.id}
-              className={`rounded-xl border px-4 py-3 text-sm font-semibold shadow-sm ${
+              className={`fleet-panel rounded-xl border px-4 py-3 text-sm font-semibold shadow-sm ${
                 item.tone === 'danger'
-                  ? 'border-fleet-danger bg-fleet-danger text-fleet-white'
-                  : 'border-fleet-red bg-fleet-red text-fleet-white'
+                  ? 'border-fleet-danger text-fleet-white'
+                  : 'border-fleet-red text-fleet-white'
               }`}
             >
               {item.message}

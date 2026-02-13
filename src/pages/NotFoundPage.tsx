@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { PageContainer } from '../components/layout/PageContainer';
 
 export function NotFoundPage() {
   return (
-    <main className="min-h-screen bg-fleet-black px-4 pt-6 pb-24 text-fleet-white">
+    <PageContainer>
       <div className="mx-auto mt-12 max-w-md space-y-4">
-        <h1 className="text-xl font-semibold text-fleet-white">Page Not Found</h1>
+        <div className="space-y-1">
+          <p className="text-xs tracking-[0.2em] text-fleet-mid">NAVIGATION</p>
+          <h1 className="fleet-text-metal text-xl font-semibold text-fleet-white">Page Not Found</h1>
+        </div>
         <Card className="space-y-3">
           <p className="text-sm text-fleet-light">The route you requested does not exist.</p>
           <Link to="/dashboard" className="block">
@@ -14,6 +18,6 @@ export function NotFoundPage() {
           </Link>
         </Card>
       </div>
-    </main>
+    </PageContainer>
   );
 }

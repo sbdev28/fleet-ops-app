@@ -4,8 +4,7 @@ export function Input({ className = '', ...props }: InputHTMLAttributes<HTMLInpu
   return (
     <input
       className={[
-        'tap w-full rounded-xl border border-fleet-mid bg-fleet-black px-3 text-sm text-fleet-white',
-        'placeholder:text-fleet-mid',
+        'tap fleet-field',
         className,
       ].join(' ')}
       {...props}

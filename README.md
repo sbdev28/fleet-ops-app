@@ -1,36 +1,53 @@
-# FleetOps Mobile Web MVP
+# FleetOps Mobile-Web MVP
 
-Mobile-web-first FleetOps frontend using React + TypeScript + Vite + Tailwind, backed by Supabase (Auth, Postgres, Storage), deployable on Netlify.
+FleetOps is a mobile-first fleet operations web app built with React + TypeScript and deployed on Netlify, using Supabase for Auth, Postgres, and Storage.
 
-## Stack
+## Tech Stack
 
 - React + TypeScript + Vite
-- Tailwind CSS with FleetOps design tokens
-- Supabase JS client
+- Tailwind CSS (Fleet tokens + tap target utilities)
 - React Router
 - React Query
-- Netlify SPA deployment
+- Supabase JS (`@supabase/supabase-js`)
+- Netlify
 
-## Local Setup
+## MVP Scope Implemented
 
-1. Install dependencies:
+- Auth login/session with Supabase (`/login`)
+- Protected app routes (`/dashboard`, `/assets`, `/assets/:id`, `/log`, `/alerts`, `/more`)
+- Asset CRUD baseline (create/list/detail)
+- Usage / maintenance / downtime log wizard
+- Rules-based due status (`overdue`, `due_soon`, `ok`, `baseline`)
+- Alerts page sourced from real rule evaluation
+- Asset timeline CSV export (usage + maintenance + downtime)
+- Mobile command-center UI with red accent theme and desktop side rail on large screens
+
+## Prerequisites
+
+- Node.js 20+
+- npm 10+
+- Supabase project with Email/Password auth enabled
+
+## Local Run
+
+1. Install dependencies
 
 ```bash
 npm install
 ```
 
-2. Configure environment:
+2. Create local environment file
 
 ```bash
 cp .env.example .env
 ```
 
-Set:
+3. Set env vars in `.env`
 
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
-3. Start dev server:
+4. Run development server
 
 ```bash
 npm run dev
@@ -38,32 +55,51 @@ npm run dev
 
 ## Supabase Setup
 
-Apply migration in `supabase/migrations/20260212170000_fleetops_mvp.sql`.
+Run SQL migration:
 
-It creates:
+- `supabase/migrations/20260212170000_fleetops_mvp.sql`
+
+This creates:
 
 - `assets`
 - `usage_logs`
 - `maintenance_entries`
 - `downtime_events`
 - `maintenance_rules`
-- RLS policies on all tables
-- Private storage bucket `maintenance-attachments` and owner-based object policies
+- RLS policies on each table (`owner_id = auth.uid()`)
+- Private storage bucket: `maintenance-attachments`
 
-## Netlify Deployment
+## Build / Typecheck
+
+```bash
+npx tsc -p tsconfig.app.json --noEmit
+npm run build
+```
+
+## Netlify Deploy
+
+`netlify.toml` is already configured:
 
 - Build command: `npm run build`
 - Publish directory: `dist`
-- Required env vars:
-  - `VITE_SUPABASE_URL`
-  - `VITE_SUPABASE_ANON_KEY`
+- SPA redirect: `/* -> /index.html` (200)
 
-`netlify.toml` includes SPA redirect:
+In Netlify site settings, add environment variables:
 
-- `/* -> /index.html` (200)
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
 
-## Current Status
+Then deploy from `main`.
 
-- Step 1 complete: repo audited and frontend scaffolded
-- Step 2 complete: Supabase client, auth provider, login page, protected routing
-- Next: Step 3 app shell refinement and UI primitives expansion
+## Security Notes
+
+- Never place Supabase `service_role` in frontend env vars
+- `VITE_SUPABASE_ANON_KEY` is expected for client-side auth
+- `.env` is ignored by git, `.env.example` is safe to commit
+
+## Mobile QA Checklist
+
+- Viewports: 360px to 430px
+- Bottom nav visible and non-overlapping
+- Tap targets remain `>= 44px` (`>= 52px` for bottom nav)
+- No horizontal scroll on core routes
