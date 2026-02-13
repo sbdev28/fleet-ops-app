@@ -17,7 +17,7 @@ export function Button({
   const base = 'tap inline-flex items-center justify-center rounded-xl border text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50';
   const byVariant =
     variant === 'primary'
-      ? 'border-fleet-blue bg-fleet-blue px-4 text-fleet-white hover:bg-fleet-blueHover'
+      ? 'border-fleet-red bg-fleet-red px-4 text-fleet-white hover:bg-fleet-redHover'
       : 'border-fleet-mid bg-transparent px-4 text-fleet-light hover:bg-fleet-dark';
   const widthClass = block ? 'w-full' : '';
 
